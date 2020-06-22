@@ -15,10 +15,13 @@ import { MatCardModule } from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NewsapiService } from './services/newsapi.service';
+import { UnsplashApiService } from './services/unsplash-api.service';
+
 import { ArticlesTechnologyComponent } from './articles-technology/articles-technology.component';
 import { ArticlesJavascriptComponent } from './articles-javascript/articles-javascript.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { environment } from '../environments/environment';
     NavbarComponent,
     ArticlesTechnologyComponent,
     ArticlesJavascriptComponent,
+    ArticlesHackernewsComponent,
   ],
   imports: [
     HttpClientModule,
@@ -44,7 +48,7 @@ import { environment } from '../environments/environment';
       enabled: environment.production,
     }),
   ],
-  providers: [NewsapiService],
+  providers: [NewsapiService, UnsplashApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

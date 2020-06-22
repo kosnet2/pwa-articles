@@ -17,6 +17,12 @@
       >
       <a
         mat-list-item
+        [routerLink]="['/articles-hackernews']"
+        routerLinkActive="router-link-active"
+        >Hacker News</a
+      >
+      <a
+        mat-list-item
         [routerLink]="['/articles-javascript']"
         routerLinkActive="router-link-active"
         >Javascript News</a
@@ -38,6 +44,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
-    <app-articles-technology></app-articles-technology>
+    <!-- <app-articles-technology></app-articles-technology> -->
+    <app-articles-hackernews></app-articles-hackernews>
   </mat-sidenav-content>
 </mat-sidenav-container>
