@@ -22,7 +22,9 @@ import { ArticlesJavascriptComponent } from './articles-javascript/articles-java
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
+import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
 
+import { MatGridListModule } from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hack
     ArticlesTechnologyComponent,
     ArticlesJavascriptComponent,
     ArticlesHackernewsComponent,
+    SanitizeHtmlPipe,
   ],
   imports: [
     HttpClientModule,
@@ -44,6 +47,7 @@ import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hack
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatGridListModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

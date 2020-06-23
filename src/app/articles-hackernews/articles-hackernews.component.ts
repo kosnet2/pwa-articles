@@ -8,14 +8,11 @@ import { NewsapiService } from '../services/newsapi.service';
   styleUrls: ['./articles-hackernews.component.css'],
 })
 export class ArticlesHackernewsComponent implements OnInit {
-  objectKeys = Object.keys;
   articles$: Observable<any>;
 
   constructor(private newsapi: NewsapiService) {}
 
   ngOnInit(): void {
     this.articles$ = this.newsapi.getBestStories();
-    // this.newsapi.getBestStories().subscribe((a) => console.log(a));
-    // this.articles$ =
   }
 }

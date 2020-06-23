@@ -2,7 +2,16 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title class="title">{{ article.title }}</mat-card-title>
-      <mat-card-subtitle>Author: {{ article.by }}</mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-icon>account_circle</mat-icon> {{ article.by }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-icon>schedule</mat-icon> {{ article.time * 1000 | date }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-icon>stars</mat-icon>
+        {{ article.score }}
+      </mat-card-subtitle>
     </mat-card-header>
     <!-- <img
     mat-card-image
@@ -10,12 +19,8 @@
     src="{{ article.urlToImage }}"
     alt=""
   /> -->
-    <mat-card-content>
-      <p>
-        {{ article.text }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions class="action-buttons">
+    <mat-card-content [innerHTML]="article.text"> </mat-card-content>
+    <mat-card-actions *ngIf="article.url !== undefined" class="action-buttons">
       <a mat-button color="primary" href="{{ article.url }}">
         <mat-icon>description</mat-icon> Full Article
       </a>

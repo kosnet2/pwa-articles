@@ -31,6 +31,7 @@ export class NewsapiService {
   }
 
   getBestStories(): Observable<any> {
+    console.log('called');
     return this.http
       .get(this.bestStories)
       .pipe(
@@ -38,10 +39,5 @@ export class NewsapiService {
           forkJoin(ids.map((id) => this.http.get(`${this.base_url}${id}.json`)))
         )
       );
-  }
-
-  getItem(id: number): Observable<any> {
-    let req = this.base_url + id.toString() + '.json';
-    return this.http.get(req);
   }
 }
