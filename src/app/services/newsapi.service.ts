@@ -16,7 +16,7 @@ export class NewsapiService {
     this.key;
 
   bestStories =
-    'https://hacker-news.firebaseio.com/v0/beststories.json?orderBy="$key"&limitToFirst=30';
+    'https://hacker-news.firebaseio.com/v0/beststories.json?orderBy="$key"&limitToFirst=20';
 
   base_url = 'https://hacker-news.firebaseio.com/v0/item/';
 
@@ -31,7 +31,6 @@ export class NewsapiService {
   }
 
   getBestStories(): Observable<any> {
-    console.log('called');
     return this.http
       .get(this.bestStories)
       .pipe(
@@ -39,5 +38,13 @@ export class NewsapiService {
           forkJoin(ids.map((id) => this.http.get(`${this.base_url}${id}.json`)))
         )
       );
+  }
+
+  getCommentsByIds(ids: Array<any>): Observable<any> {
+    return forkJoin(
+      ids
+        .slice(0, Math.min(100, ids.length))
+        .map((id) => this.http.get(`${this.base_url}${id}.json`))
+    );
   }
 }

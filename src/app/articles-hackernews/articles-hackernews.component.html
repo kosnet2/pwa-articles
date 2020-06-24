@@ -1,5 +1,6 @@
-<div *ngFor="let article of articles$ | async">
-  <mat-card>
+<mat-spinner *ngIf="fetchingStories"></mat-spinner>
+<div *ngFor="let article of articles$">
+  <mat-card class="shadoweffect">
     <mat-card-header>
       <mat-card-title class="title">{{ article.title }}</mat-card-title>
       <mat-card-subtitle>
@@ -13,18 +14,44 @@
         {{ article.score }}
       </mat-card-subtitle>
     </mat-card-header>
-    <!-- <img
-    mat-card-image
-    class="img-article"
-    src="{{ article.urlToImage }}"
-    alt=""
-  /> -->
-    <mat-card-content [innerHTML]="article.text"> </mat-card-content>
     <mat-card-actions *ngIf="article.url !== undefined" class="action-buttons">
       <a mat-button color="primary" href="{{ article.url }}">
         <mat-icon>description</mat-icon> Full Article
       </a>
     </mat-card-actions>
+    <mat-card-content>
+      <mat-expansion-panel
+        #mapanel
+        (opened)="fetchComments(article.id, article.kids)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            View comments ({{ article.descendants }})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- [innerHTML]="article.text" -->
+        <mat-spinner *ngIf="fetchingComments"></mat-spinner>
+        <mat-card
+          (dblclick)="mapanel.close()"
+          class="shadoweffect"
+          *ngFor="let comment of comments[article.id]"
+        >
+          <mat-card-subtitle class="grid-container">
+            <div class="grid-item">
+              <mat-icon>account_circle</mat-icon> {{ comment.by }}
+            </div>
+            <div class="grid-item">
+              <mat-icon>schedule</mat-icon> {{ comment.time * 1000 | date }}
+            </div>
+            <div class="grid-item">
+              <mat-icon>reply</mat-icon>
+              {{ comment.kids !== undefined ? comment.kids.length : 0 }}
+            </div>
+          </mat-card-subtitle>
+          <mat-card-content [innerHTML]="comment.text"> </mat-card-content>
+        </mat-card>
+        <p></p>
+      </mat-expansion-panel>
+    </mat-card-content>
   </mat-card>
-  <hr />
 </div>

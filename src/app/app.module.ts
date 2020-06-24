@@ -23,8 +23,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
 import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatCardModule,
     MatGridListModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
