@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { NewsapiService } from './services/newsapi.service';
 import { UnsplashApiService } from './services/unsplash-api.service';
 
@@ -26,6 +27,9 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { JobsHackernewsComponent } from './jobs-hackernews/jobs-hackernews.component';
+import { BingImageSearchService } from './services/bing-image-search.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +38,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ArticlesJavascriptComponent,
     ArticlesHackernewsComponent,
     SanitizeHtmlPipe,
+    JobsHackernewsComponent,
   ],
   imports: [
     HttpClientModule,
-
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -55,7 +60,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       enabled: environment.production,
     }),
   ],
-  providers: [NewsapiService, UnsplashApiService],
+  providers: [NewsapiService, UnsplashApiService, BingImageSearchService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, from, forkJoin, ObservableInput } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { BingImageSearchService } from './bing-image-search.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,14 @@ export class NewsapiService {
     this.key;
 
   bestStories =
-    'https://hacker-news.firebaseio.com/v0/beststories.json?orderBy="$key"&limitToFirst=20';
+    'https://hacker-news.firebaseio.com/v0/beststories.json?orderBy="$key"&limitToFirst=30';
+
+  jobStories =
+    'https://hacker-news.firebaseio.com/v0/jobstories.json?orderBy="$key"&limitToFirst=30';
 
   base_url = 'https://hacker-news.firebaseio.com/v0/item/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private injector: Injector) {}
 
   getArticlesTechnology(): Observable<any> {
     return this.http.get(this.techNews).pipe(map((data: any) => data.articles));
@@ -31,8 +35,20 @@ export class NewsapiService {
   }
 
   getBestStories(): Observable<any> {
+    this.injector.get(BingImageSearchService).sayHello();
+
     return this.http
       .get(this.bestStories)
+      .pipe(
+        mergeMap((ids: []) =>
+          forkJoin(ids.map((id) => this.http.get(`${this.base_url}${id}.json`)))
+        )
+      );
+  }
+
+  getJobStories(): Observable<any> {
+    return this.http
+      .get(this.jobStories)
       .pipe(
         mergeMap((ids: []) =>
           forkJoin(ids.map((id) => this.http.get(`${this.base_url}${id}.json`)))

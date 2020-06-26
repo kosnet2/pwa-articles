@@ -7,30 +7,36 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Topics</mat-toolbar>
     <mat-nav-list>
-      <a
+      <!-- <a
         mat-list-item
         [routerLink]="['/articles']"
         routerLinkActive="router-link-active"
         >Technology News</a
-      >
+      > -->
       <a
         mat-list-item
         [routerLink]="['/articles-hackernews']"
         routerLinkActive="router-link-active"
         >Hacker News</a
       >
-      <a
+      <!-- <a
         mat-list-item
         [routerLink]="['/articles-javascript']"
         routerLinkActive="router-link-active"
         >Javascript News</a
+      > -->
+      <a
+        mat-list-item
+        [routerLink]="['/jobs-hackernews']"
+        routerLinkActive="router-link-active"
+        >Hacker Jobs</a
       >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="accent">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -40,7 +46,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Tech News - made by Karlen Avogian</span>
+      <span>Tech News</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
