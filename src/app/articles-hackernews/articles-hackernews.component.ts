@@ -23,9 +23,21 @@ export class ArticlesHackernewsComponent implements OnInit {
       (stories) => {
         this.articles$ = stories;
         this.fetchingStories = false;
+
+        this.articles$.forEach((article) => {
+          this.newsapi.getImageByTitle(article['title']).subscribe(
+            (res) => {
+              article['image'] = res['value'][0]['thumbnailUrl'];
+            },
+            (err) => {
+              console.error(err);
+              article['image'] = this.newsapi.getDefaultImage();
+            }
+          );
+        });
       },
       (err) => {
-        console.log(err);
+        console.error(err);
         this.fetchingStories = false;
       }
     );

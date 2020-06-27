@@ -8,14 +8,6 @@ import { BingImageSearchService } from './bing-image-search.service';
   providedIn: 'root',
 })
 export class NewsapiService {
-  key = '1c49507649114ce3a6e3fc4fdaf73fe1';
-  jsNews =
-    'https://newsapi.org/v2/everything?q=javascript&sortBy=latest&apiKey=' +
-    this.key;
-  techNews =
-    'https://newsapi.org/v2/top-headlines?category=technology&language=en&country=us&apiKey=' +
-    this.key;
-
   bestStories =
     'https://hacker-news.firebaseio.com/v0/beststories.json?orderBy="$key"&limitToFirst=30';
 
@@ -24,18 +16,13 @@ export class NewsapiService {
 
   base_url = 'https://hacker-news.firebaseio.com/v0/item/';
 
+  default_image_url =
+    'https://blog.radware.com/wp-content/uploads/2016/10/hacker-profile-2.jpg';
+
   constructor(private http: HttpClient, private injector: Injector) {}
 
-  getArticlesTechnology(): Observable<any> {
-    return this.http.get(this.techNews).pipe(map((data: any) => data.articles));
-  }
-
-  getArticlesJavascript(): Observable<any> {
-    return this.http.get(this.jsNews).pipe(map((data: any) => data.articles));
-  }
-
   getBestStories(): Observable<any> {
-    this.injector.get(BingImageSearchService).sayHello();
+    //this.injector.get(BingImageSearchService).getImageByTitle();
 
     return this.http
       .get(this.bestStories)
@@ -62,5 +49,13 @@ export class NewsapiService {
         .slice(0, Math.min(100, ids.length))
         .map((id) => this.http.get(`${this.base_url}${id}.json`))
     );
+  }
+
+  getImageByTitle(title: string): Observable<any> {
+    return this.injector.get(BingImageSearchService).getImageByTitle(title, 5);
+  }
+
+  getDefaultImage(): string {
+    return this.default_image_url;
   }
 }

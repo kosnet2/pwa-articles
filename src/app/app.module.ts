@@ -14,12 +14,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { NewsapiService } from './services/newsapi.service';
 import { UnsplashApiService } from './services/unsplash-api.service';
 
-import { ArticlesTechnologyComponent } from './articles-technology/articles-technology.component';
-import { ArticlesJavascriptComponent } from './articles-javascript/articles-javascript.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
@@ -34,15 +31,12 @@ import { BingImageSearchService } from './services/bing-image-search.service';
   declarations: [
     AppComponent,
     NavbarComponent,
-    ArticlesTechnologyComponent,
-    ArticlesJavascriptComponent,
     ArticlesHackernewsComponent,
     SanitizeHtmlPipe,
     JobsHackernewsComponent,
   ],
   imports: [
     HttpClientModule,
-    HttpModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
