@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1592874804684,
+  "timestamp": 1593287118730,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.f093bbf5e615327a162b.js",
-        "/main-es5.f093bbf5e615327a162b.js",
+        "/main-es2015.01935975aae24565efe2.js",
+        "/main-es5.01935975aae24565efe2.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.f332a089ad1600448873.js",
         "/polyfills-es5.177e85a9724683782539.js",
@@ -26,6 +26,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/assets/files/bingsearch",
         "/assets/icons/icon-128x128.png",
         "/assets/icons/icon-144x144.png",
         "/assets/icons/icon-152x152.png",
@@ -40,6 +41,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/assets/files/bingsearch": "722f1dbe8173ee42a601b8c121d2bb695991ee16",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -49,9 +51,9 @@
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "3935f746961e4e2a30c4296f1bc604d778411c90",
-    "/main-es2015.f093bbf5e615327a162b.js": "8fe3747a4116234c5a5a134a7d73841a88052696",
-    "/main-es5.f093bbf5e615327a162b.js": "7ef0101ada58bb82ac874becddc9086a1bff8882",
+    "/index.html": "7fe9e636034e24fc253a2aa7f193bc2d680a4313",
+    "/main-es2015.01935975aae24565efe2.js": "1cd17d80027c2819ecaa5582ddaaff8d420b4d3e",
+    "/main-es5.01935975aae24565efe2.js": "41b5aabec2213cb3ac21b3e4434824fedd1665b0",
     "/manifest.webmanifest": "999b929e3fbf2ea831cff5df30e0647f962f14c3",
     "/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "/polyfills-es5.177e85a9724683782539.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
