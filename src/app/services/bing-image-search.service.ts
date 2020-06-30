@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class BingImageSearchService {
   // service key
-  serviceKey = '632a196943ed45ce9e1f1a9a9ee26b15';
+  serviceKey = '8c3b94d20c9b4076a54730ac0a271808';
 
   imageSearchUrl =
-    'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
+    'https://image-search-2.cognitiveservices.azure.com/bing/v7.0/images/search';
   constructor(private http: HttpClient) {}
 
   getImageByTitle(title: string, count: number): Observable<any> {
