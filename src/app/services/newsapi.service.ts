@@ -16,8 +16,7 @@ export class NewsapiService {
 
   base_url = 'https://hacker-news.firebaseio.com/v0/item/';
 
-  default_image_url =
-    'https://blog.radware.com/wp-content/uploads/2016/10/hacker-profile-2.jpg';
+  default_image_url = 'assets/default-image.jpg';
 
   constructor(private http: HttpClient, private injector: Injector) {}
 

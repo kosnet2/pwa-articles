@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewsapiService } from '../services/newsapi.service';
 
@@ -15,26 +15,37 @@ export class ArticlesHackernewsComponent implements OnInit {
 
   constructor(private newsapi: NewsapiService) {}
 
+  getYPosition(e: Event): number {
+    return (e.target as Element).scrollTop;
+  }
+
+  onArticleScroll(e: Event) {
+    this.debug(e);
+  }
+
   ngOnInit(): void {
     this.comments = new Observable<any>();
     this.fetchingStories = true;
-
     this.newsapi.getBestStories().subscribe(
       (stories) => {
         this.articles$ = stories;
         this.fetchingStories = false;
-
-        this.articles$.forEach((article) => {
-          this.newsapi.getImageByTitle(article['title']).subscribe(
-            (res) => {
-              article['image'] = res['value'][0]['thumbnailUrl'];
-            },
-            (err) => {
-              console.error(err);
-              article['image'] = this.newsapi.getDefaultImage();
-            }
-          );
-        });
+        // this.articles$.forEach((article) => {
+        //   try {
+        //     const regex = /[A-Z][A-Za-z]+/g;
+        //     const processedTitle = article['title'].match(regex).join(' ');
+        //     this.newsapi.getImageByTitle(processedTitle).subscribe(
+        //       (res) => {
+        //         article['image'] = res['value'][0]['thumbnailUrl'];
+        //       },
+        //       (err) => {
+        //         article['image'] = this.newsapi.getDefaultImage();
+        //       }
+        //     );
+        //   } catch (err) {
+        //     article['image'] = this.newsapi.getDefaultImage();
+        //   }
+        // });
       },
       (err) => {
         console.error(err);
@@ -63,8 +74,7 @@ export class ArticlesHackernewsComponent implements OnInit {
       );
     }
   }
-
-  debug() {
-    console.log('debug');
+  debug(e) {
+    console.log(e);
   }
 }

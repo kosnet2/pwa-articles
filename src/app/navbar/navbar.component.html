@@ -13,12 +13,14 @@
         mat-list-item
         [routerLink]="['/articles-hackernews']"
         routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
         >Hacker News</a
       >
       <a
         mat-list-item
         [routerLink]="['/jobs-hackernews']"
         routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
         >Hacker Jobs</a
       >
     </mat-nav-list>
