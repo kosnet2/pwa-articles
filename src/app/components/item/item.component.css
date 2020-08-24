@@ -1,0 +1,19 @@
+.title,
+.title a,
+.title div {
+  text-decoration: none;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+}
+
+mat-card-content {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* style for elements to be displayed in the middle of the page */
+.page-spinner {
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}

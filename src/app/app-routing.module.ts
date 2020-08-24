@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
-import { JobsHackernewsComponent } from './jobs-hackernews/jobs-hackernews.component';
+import { ItemManagerComponent } from './components/item-manager/item-manager.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/articles-hackernews', pathMatch: 'full' },
-  { path: 'articles-hackernews', component: ArticlesHackernewsComponent },
-  { path: 'jobs-hackernews', component: JobsHackernewsComponent },
-  { path: '**', redirectTo: '/articles-hackernews', pathMatch: 'full' },
+  { path: '', redirectTo: '/bestStories', pathMatch: 'full' },
+  { path: 'bestStories', component: ItemManagerComponent },
+  { path: 'jobStories', component: ItemManagerComponent },
+  { path: 'newStories', component: ItemManagerComponent },
+  { path: 'askStories', component: ItemManagerComponent },
+  { path: 'showStories', component: ItemManagerComponent },
+  { path: 'topStories', component: ItemManagerComponent },
+  { path: '**', redirectTo: '/bestStories', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -11,6 +11,14 @@
   background-color: #ffd740;
 }
 
+.mat-list-item-content {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.mat-toolbar {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;

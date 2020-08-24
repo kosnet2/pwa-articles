@@ -1,0 +1,74 @@
+<mat-expansion-panel
+  *ngIf="
+    article !== {} && article.id !== undefined && article.kids !== undefined
+  "
+  #mapanel
+  (opened)="fetchComments(article.id, article.kids)"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      View comments ({{ article.kids.length }})
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div *ngIf="comments$[article.id] | async as comments; else commentsLoading">
+    <ng-container>
+      <mat-card
+        (dblclick)="mapanel.close()"
+        class="shadoweffect"
+        *ngFor="let comment of comments"
+      >
+        <app-item-details
+          [by]="comment.by"
+          [time]="comment.time * 1000"
+          [replies]="comment.kids !== undefined ? comment.kids.length : 0"
+        ></app-item-details>
+
+        <mat-card-content [innerHTML]="comment.text"> </mat-card-content>
+        <mat-card-content>
+          <mat-expansion-panel
+            *ngIf="comment.id !== undefined && comment.kids !== undefined"
+            #masubpanel
+            (opened)="fetchComments(comment.id, comment.kids)"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Replies ({{ comment.kids.length }})
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div
+              *ngIf="
+                comments$[comment.id] | async as subcomments;
+                else subcommentsLoading
+              "
+            >
+              <ng-container>
+                <mat-card
+                  (dblclick)="masubpanel.close()"
+                  class="shadoweffect"
+                  *ngFor="let subcomment of subcomments"
+                >
+                  <app-item-details
+                    [by]="subcomment.by"
+                    [time]="subcomment.time * 1000"
+                    [replies]="
+                      subcomment.kids !== undefined ? subcomment.kids.length : 0
+                    "
+                  ></app-item-details>
+                  <mat-card-content
+                    [innerHTML]="subcomment.text"
+                  ></mat-card-content>
+                </mat-card>
+              </ng-container>
+            </div>
+            <ng-template #subcommentsLoading>
+              <mat-spinner class="comment-spinner"></mat-spinner>
+            </ng-template>
+          </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+  <ng-template #commentsLoading>
+    <mat-spinner class="comment-spinner"></mat-spinner>
+  </ng-template>
+</mat-expansion-panel>

@@ -1,0 +1,27 @@
+<div class="item-details-container">
+  <div class="item-details">
+    <div *ngIf="by !== undefined">
+      <mat-icon>account_circle</mat-icon>
+      <br />
+      {{ by }}
+    </div>
+
+    <div *ngIf="time !== undefined">
+      <mat-icon>schedule</mat-icon>
+      <br />
+      {{ time | date }}
+    </div>
+
+    <div *ngIf="score !== undefined">
+      <mat-icon>stars</mat-icon>
+      <br />
+      {{ score }}
+    </div>
+
+    <div *ngIf="replies !== undefined">
+      <mat-icon>reply</mat-icon>
+      <br />
+      {{ replies }}
+    </div>
+  </div>
+</div>

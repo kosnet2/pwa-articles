@@ -1,0 +1,12 @@
+/* style for elements to be displayed in the middle of their container */
+.comment-spinner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+mat-panel-title,
+mat-card-content {
+  font-family: "Courier New", Courier, monospace;
+}

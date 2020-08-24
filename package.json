@@ -22,8 +22,6 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "@angular/service-worker": "~9.1.11",
-    "@azure/cognitiveservices-imagesearch": "^3.0.0",
-    "ms-rest-azure": "^3.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

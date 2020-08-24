@@ -1,0 +1,35 @@
+<div *ngIf="articles$ | async as articles; else loading">
+  <ng-container>
+    <div *ngFor="let article of articles">
+      <mat-card class="shadoweffect">
+        <mat-card-header>
+          <mat-card-title class="title">
+            <div *ngIf="article.url === undefined; else withUrl">
+              {{ article.title }}
+            </div>
+            <ng-template #withUrl>
+              <a [href]="article.url">
+                {{ article.title }}
+              </a>
+            </ng-template>
+          </mat-card-title>
+        </mat-card-header>
+        <app-item-details
+          [by]="article.by"
+          [time]="article.time * 1000"
+          [score]="article.score"
+        ></app-item-details>
+        <mat-card-content
+          *ngIf="article.text !== undefined"
+          [innerHTML]="article.text"
+        ></mat-card-content>
+        <mat-card-content>
+          <app-expansion-panel [article]="article"></app-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>
+<ng-template #loading>
+  <mat-spinner class="page-spinner"></mat-spinner>
+</ng-template>

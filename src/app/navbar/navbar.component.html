@@ -11,17 +11,51 @@
     <mat-nav-list>
       <a
         mat-list-item
-        [routerLink]="['/articles-hackernews']"
+        class="mat-list-item-content"
+        [routerLink]="['/bestStories']"
         routerLinkActive="router-link-active"
         (click)="drawer.toggle()"
-        >Hacker News</a
+        >Best Stories</a
       >
       <a
         mat-list-item
-        [routerLink]="['/jobs-hackernews']"
+        class="mat-list-item-content"
+        [routerLink]="['/newStories']"
         routerLinkActive="router-link-active"
         (click)="drawer.toggle()"
-        >Hacker Jobs</a
+        >New Stories</a
+      >
+      <a
+        mat-list-item
+        class="mat-list-item-content"
+        [routerLink]="['/topStories']"
+        routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
+        >Top Stories</a
+      >
+      <a
+        mat-list-item
+        class="mat-list-item-content"
+        [routerLink]="['/showStories']"
+        routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
+        >Show Stories</a
+      >
+      <a
+        mat-list-item
+        class="mat-list-item-content"
+        [routerLink]="['/askStories']"
+        routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
+        >Ask Stories</a
+      >
+      <a
+        mat-list-item
+        class="mat-list-item-content"
+        [routerLink]="['/jobStories']"
+        routerLinkActive="router-link-active"
+        (click)="drawer.toggle()"
+        >Jobs</a
       >
     </mat-nav-list>
   </mat-sidenav>

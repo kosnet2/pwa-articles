@@ -17,26 +17,28 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Services
 import { NewsapiService } from './services/newsapi.service';
-import { BingImageSearchService } from './services/bing-image-search.service';
 
 // Components
-import { ArticlesHackernewsComponent } from './articles-hackernews/articles-hackernews.component';
-import { JobsHackernewsComponent } from './jobs-hackernews/jobs-hackernews.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { ExpansionPanelComponent } from './components/expansion-panel/expansion-panel.component';
+import { ItemComponent } from './components/item/item.component';
+import { ItemManagerComponent } from './components/item-manager/item-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ArticlesHackernewsComponent,
-    JobsHackernewsComponent,
+    ItemDetailsComponent,
+    ExpansionPanelComponent,
+    ItemComponent,
+    ItemManagerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -50,14 +52,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
   ],
-  providers: [NewsapiService, BingImageSearchService],
+  providers: [NewsapiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
